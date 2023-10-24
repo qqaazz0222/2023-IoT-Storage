@@ -1,34 +1,3 @@
-#!/usr/bin/env python3
-
-# Copyright (c) 2009, Giampaolo Rodola'. All rights reserved.
-# Use of this source code is governed by a BSD-style license that can be
-# found in the LICENSE file.
-
-"""A clone of iotop (http://guichaz.free.fr/iotop/) showing real time
-disk I/O statistics.
-
-It works on Linux only (FreeBSD and macOS are missing support for IO
-counters).
-It doesn't work on Windows as curses module is required.
-
-Example output:
-
-$ python3 scripts/iotop.py
-Total DISK READ: 0.00 B/s | Total DISK WRITE: 472.00 K/s
-PID   USER      DISK READ  DISK WRITE  COMMAND
-13155 giampao    0.00 B/s  428.00 K/s  /usr/bin/google-chrome-beta
-3260  giampao    0.00 B/s    0.00 B/s  bash
-3779  giampao    0.00 B/s    0.00 B/s  gnome-session --session=ubuntu
-3830  giampao    0.00 B/s    0.00 B/s  /usr/bin/dbus-launch
-3831  giampao    0.00 B/s    0.00 B/s  //bin/dbus-daemon --fork --print-pid 5
-3841  giampao    0.00 B/s    0.00 B/s  /usr/lib/at-spi-bus-launcher
-3845  giampao    0.00 B/s    0.00 B/s  /bin/dbus-daemon
-3848  giampao    0.00 B/s    0.00 B/s  /usr/lib/at-spi2-core/at-spi2-registryd
-3862  giampao    0.00 B/s    0.00 B/s  /usr/lib/gnome-settings-daemon
-
-Author: Giampaolo Rodola' <g.rodola@gmail.com>
-"""
-
 import sys
 import time
 
@@ -47,7 +16,6 @@ lineno = 0
 
 
 def printl(line, highlight=False):
-    """A thin wrapper around curses's addstr()."""
     global lineno
     try:
         if highlight:
@@ -64,11 +32,6 @@ def printl(line, highlight=False):
 
 
 def poll(interval):
-    """Calculate IO usage by comparing IO statistics before and
-    after the interval.
-    Return a tuple including all currently running processes
-    sorted by IO activity and total disks I/O activity.
-    """
     # first get a list of all processes and disk io counters
     procs = list(psutil.process_iter())
     for p in procs[:]:
