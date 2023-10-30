@@ -1,0 +1,127 @@
+#storage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+#storage .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#storage .body .optionWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 16px;
+    width: calc(100% - 32px);
+    height: 40px;
+    border-bottom: 1px solid var(--COL-GRAY1);
+}
+
+#storage .body .optionWrap .title {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--COL-BLACK);
+}
+
+#storage .body .optionWrap select {
+    padding: 4px 8px;
+    width: 140px;
+    border: 1px solid var(--COL-GRAY3);
+    border-radius: 20px;
+    outline: none;
+}
+
+#storage .body .optionWrap select:hover {
+    border: 1px solid var(--COL-PRIMARY1);
+}
+
+#storage .body .contentWrap {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#storage .body .contentWrap .infoWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    width: calc(200px - 32px);
+    height: calc(100% - 32px);
+    border-right: 1px solid var(--COL-GRAY1);
+}
+
+#storage .body .contentWrap .infoWrap .row {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+#storage .body .contentWrap .infoWrap .row .key {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--COL-GRAY4);
+}
+
+#storage .body .contentWrap .infoWrap .row .value {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--COL-BLACK);
+}
+
+#storage .body .folderWrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 16px;
+    width: calc(100% - 32px);
+    max-height: calc(100svh - 134px);
+    overflow: scroll;
+}
+
+#storage .body .folderWrap .directoryWrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    height: 120px;
+}
+
+#storage .body .folderWrap .directoryWrap .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    max-height: 120px;
+    cursor: pointer;
+}
+
+#storage .body .folderWrap .directoryWrap .item:hover {
+    background: rgba(51, 111, 255, .1);
+    border-radius: 8px;
+}
+
+#storage .body .folderWrap .directoryWrap .item img {
+    width: 80px;
+    height: 80px;
+}
+
+#storage .body .folderWrap .directoryWrap .item span {
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

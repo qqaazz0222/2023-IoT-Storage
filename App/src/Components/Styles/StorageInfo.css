@@ -1,0 +1,92 @@
+#storageInfo {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    background: var(--COL-WHITE);
+    border: 1px solid var(--COL-GRAY1);
+    border-radius: 6px;
+}
+
+#storageInfo .titleWrap {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--COL-GRAY1);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#storageInfo .contentWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--COL-GRAY1);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--COL-GRAY4);
+    overflow: scroll;
+}
+
+#storageInfo .contentWrap .listWrap {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+}
+
+#storageInfo .contentWrap .listWrap .item {
+    display: flex;
+    flex-direction: column;
+    background: var(--COL-WHITE);
+    border: 1px solid var(--COL-GRAY1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#storageInfo .contentWrap .listWrap .item .itemName {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--COL-GRAY1);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--COL-BLACK);
+}
+
+#storageInfo .contentWrap .listWrap .item .itemInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 8px;
+    gap: 4px;
+}
+
+#storageInfo .contentWrap .listWrap .item .itemInfo .row {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+#storageInfo .contentWrap .listWrap .item .itemInfo .row .key {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--COL-GRAY4);
+}
+
+#storageInfo .contentWrap .listWrap .item .itemInfo .row .value {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--COL-GRAY6);
+}
+
+#storageInfo .contentWrap .listWrap .item .itemInfo .barWrap {
+    width: 100%;
+    height: 10px;
+    background: var(--COL-GRAY2);
+    border-radius: 100px;
+}
+
+#storageInfo .contentWrap .listWrap .item .itemInfo .barWrap .bar {
+    height: 10px;
+    background: var(--COL-PRIMARY1);
+    border-radius: 100px;
+}

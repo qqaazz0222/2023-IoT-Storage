@@ -1,0 +1,4 @@
+#stackLayout {
+    display: flex;
+    flex-direction: column;
+}

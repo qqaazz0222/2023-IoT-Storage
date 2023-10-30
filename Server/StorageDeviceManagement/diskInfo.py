@@ -4,10 +4,12 @@ import psutil
 from psutil._common import bytes2human
 
 
-def main():
+def main(p = True):
     templ = "%-17s %8s %8s %8s %5s%% %9s  %s"
-    print(templ % ("Device", "Total", "Used", "Free", "Use ", "Type",
-                   "Mount"))
+    if p == True:
+        print(templ % ("Device", "Total", "Used", "Free", "Use", "Type",
+                        "Mount"))
+    disk_data = []
     for part in psutil.disk_partitions(all=False):
         if os.name == 'nt':
             if 'cdrom' in part.opts or part.fstype == '':
@@ -16,14 +18,18 @@ def main():
                 # partition or just hang.
                 continue
         usage = psutil.disk_usage(part.mountpoint)
-        print(templ % (
-            part.device,
-            bytes2human(usage.total),
-            bytes2human(usage.used),
-            bytes2human(usage.free),
-            int(usage.percent),
-            part.fstype,
-            part.mountpoint))
+        disk_data.append({"device": part.device, "total": bytes2human(usage.total), "used": bytes2human(usage.used), "free": bytes2human(usage.free), "use": int(usage.percent), "type": part.fstype,
+                          "mount": part.mountpoint})
+        if p == True:
+            print(templ % (
+                part.device,
+                bytes2human(usage.total),
+                bytes2human(usage.used),
+                bytes2human(usage.free),
+                int(usage.percent),
+                part.fstype,
+                part.mountpoint))
+    return disk_data
 
 
 def get_partitions(n=None, p=True):

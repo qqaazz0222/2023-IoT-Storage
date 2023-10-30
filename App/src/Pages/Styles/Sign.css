@@ -1,0 +1,198 @@
+#signIn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sign {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#sign .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sign .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px;
+}
+
+#sign .footer .btnWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    max-width: 240px;
+}
+
+#sign .footer .btnWrap button {
+    flex: 1;
+    background: var(--COL-GRAY1);
+    border: none;
+    border-radius: 6px;
+    padding: 12px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--COL-BLACK);
+}
+
+#sign .footer .linkBtn {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--COL-GRAY6);
+    background: none;
+    border: none;
+    text-decoration: underline;
+}
+
+#signIn .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    gap: 8px;
+}
+
+#signIn .header .navWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+}
+
+#signIn .header .titleWrap {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+#signIn .header .funcWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+}
+
+#signIn .body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 24px;
+    width: calc(100% - 48px);
+}
+
+#signIn .body input {
+    padding: 12px 0;
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--COL-GRAY3);
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--COL-BLACK);
+    transition: border .3s;
+}
+
+#signIn .body input::placeholder {
+    color: var(--COL-GRAY4);
+}
+
+#signIn .body input:focus {
+    border-bottom: 1px solid var(--COL-BLACK);
+}
+
+#signIn .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    width: calc(100% - 48px);
+}
+
+#signIn .footer .btnWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+#signIn .footer .btnWrap button {
+    width: 100%;
+    background: var(--COL-GRAY1);
+    border: none;
+    border-radius: 6px;
+    padding: 14px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--COL-BLACK);
+}
+
+#signIn .footer .btnWrap button.disable {
+    background: var(--COL-GRAY1);
+    border: none;
+    border-radius: 6px;
+    padding: 14px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--COL-BLACK);
+}
+
+#signIn .footer .infoWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 14px;
+    gap: 8px;
+    width: 100%;
+}
+
+#signIn .footer .infoWrap a {
+    color: var(--COL-PRIMARY1);
+}
+
+#signIn .footer .infoWrap a:hover {
+    color: var(--COL-PRIMARY3);
+}
+
+#signIn .footer .agreeWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 16px;
+    gap: 8px;
+    width: 100%;
+}
+
+#signIn .footer .agreeWrap label {
+    cursor: pointer;
+}
+
+
+
+#signIn .footer .linkBtn {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--COL-GRAY6);
+    background: none;
+    border: none;
+    text-decoration: underline;
+}

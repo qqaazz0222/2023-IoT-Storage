@@ -1,0 +1,26 @@
+#summary {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+#summary .body {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 24px;
+    width: calc(100% - 48px);
+    height: calc(100% - 109px);
+    max-height: calc(100% - 109px);
+    background: var(--COL-BG);
+}
+
+#summary .body .row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+}

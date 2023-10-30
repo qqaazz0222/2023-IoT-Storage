@@ -1,0 +1,104 @@
+@font-face {
+    font-family: 'Pretendard Variable';
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    src: url('./Fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+
+:root {
+    --COL-PRIMARY1: #336FFF;
+    --COL-PRIMARY2: #1A5EFF;
+    --COL-PRIMARY3: #004CFF;
+    --COL-PRIMARY4: #0145E6;
+    --COL-PRIMARY5: #003CCC;
+    --COL-LIGHT: #FFFFFF;
+    --COL-WHITE: #FEFEFE;
+    --COL-GRAY1: #EEEEEE;
+    --COL-GRAY2: #DDDDDD;
+    --COL-GRAY3: #CCCCCC;
+    --COL-GRAY4: #999999;
+    --COL-GRAY5: #666666;
+    --COL-GRAY6: #333333;
+    --COL-BLACK: #111111;
+    --COL-BG: #fbf9f9;
+    --content-max-width: 1240px;
+}
+
+* {
+    font-family: 'Pretendard Variable';
+    white-space: -1px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+input,
+select,
+button {
+    cursor: pointer;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--COL-BLACK);
+}
+
+h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--COL-BLACK);
+}
+
+
+h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--COL-BLACK);
+}
+
+
+h4 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--COL-GRAY6);
+}
+
+h5 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--COL-GRAY6);
+}
+
+h6 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--COL-GRAY6);
+}
