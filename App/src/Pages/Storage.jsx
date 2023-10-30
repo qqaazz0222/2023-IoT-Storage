@@ -5,7 +5,7 @@ import "./Styles/Storage.css";
 import { useEffect, useState } from "react";
 import IconFolder from "../Images/IconFolder.png";
 
-const URL = "http://192.168.0.84:3001";
+const URL = "http://192.168.0.48:3001";
 
 const Storage = () => {
     const get_storage_info = async () => {
