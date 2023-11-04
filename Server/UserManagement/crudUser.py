@@ -14,7 +14,7 @@ def create_user(id=None, pw=None, desc=None):
             f = open(PATH_USER_DATA, 'a')
             wr = csv.writer(f)
             wr.writerow([id, pw, desc])
-            return {id: id, pw: pw, desc: desc}
+            return {"id": id, "pw": pw, "desc": desc}
     else:
         return "[Error] not enough parameter."
 

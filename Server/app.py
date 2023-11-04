@@ -88,6 +88,19 @@ def sign_in():
         return jsonify(None)
 
 
+@app.route('/sign/up', methods=["POST"])
+def sign_up():
+    data = request.get_json()
+    print(data)
+    response = crudUser.create_user(
+        id=data["id"], pw=data["pw"], desc=data["id"] + " Account.")
+    print(response)
+    if type(response) == dict:
+        return jsonify(response)
+    else:
+        return jsonify(None)
+
+
 @app.route('/system/cpu', methods=["GET"])  # [ 시스템(CPU) 상태 조회 ]
 def view_cpu():
     response = cpuInfo.main(False)

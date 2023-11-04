@@ -1,19 +1,17 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Styles/Sign.css";
 import IconBack from "../Images/IconLeft.png";
-import axios from "axios";
-import { useState } from "react";
 
-const URL = "http://192.168.0.48:3001";
+const URL = process.env.REACT_APP_URL;
 
 const SignIn = () => {
     const navigate = useNavigate();
     const [id, setId] = useState("");
     const [pw, setPw] = useState("");
     const signIn = async () => {
-        console.log(id, pw);
         const response = await axios.post(URL + "/sign/in", { id: id, pw: pw });
-        console.log(response.data);
         if (response.data !== null) {
             window.alert(`${response.data.id}님 반갑습니다.`);
             navigate("/summary");

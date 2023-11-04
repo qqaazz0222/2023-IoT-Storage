@@ -2,7 +2,7 @@ import axios from "axios";
 import "./Styles/SystemInfo.css";
 import { useEffect, useState } from "react";
 
-const URL = "http://192.168.0.48:3001";
+const URL = process.env.REACT_APP_URL;
 
 const SystemInfo = () => {
     const get_cpu_info = async () => {
