@@ -1,0 +1,31 @@
+.fileIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    max-height: 120px;
+    cursor: pointer;
+}
+
+.fileIcon:hover {
+    background: rgba(51, 111, 255, .1);
+    border-radius: 8px;
+}
+
+.fileIcon img {
+    margin-bottom: 4px;
+    width: 80px;
+    height: 80px;
+}
+
+.fileIcon span {
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

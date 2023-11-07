@@ -1,0 +1,34 @@
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(px);
+    z-index: 100;
+}
+
+.loading .spinner {
+    width: 40px;
+    height: 40px;
+    border: 8px solid var(--COL-GRAY3);
+    border-top: 8px solid var(--COL-PRIMARY1);
+    border-bottom: 8px solid var(--COL-PRIMARY1);
+    border-radius: 50%;
+    animation: spin 1s infinite ease-in-out;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

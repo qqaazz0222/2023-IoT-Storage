@@ -2,30 +2,83 @@ import axios from "axios";
 
 import Header from "../Components/Header";
 import "./Styles/Storage.css";
-import { useEffect, useState } from "react";
-import IconFolder from "../Images/IconFolder.png";
+import { useEffect, useRef, useState } from "react";
+import FileIcon from "../Components/FileIcon";
+import Loading from "../Components/Loading";
+import Upload from "../Components/Upload";
 
 const URL = process.env.REACT_APP_URL;
 
 const Storage = () => {
-    const get_storage_info = async () => {
-        const response = await axios.get(URL + "/system/disk");
-        console.log(response.data);
-        setStorage(response.data);
-    };
-    const get_directory_info = async (path) => {
-        const response = await axios.post(URL + "/storage/read", {
-            path: path,
-        });
-        console.log(response.data);
-        setDirectory(response.data);
-    };
+    const [isLoading, setIsLoading] = useState(true);
     const [storage, setStorage] = useState([
         { device: "", type: "", total: "", free: "", used: "" },
     ]);
     const [directory, setDirectory] = useState([]);
     const [selIdx, setSelIdx] = useState(0);
     const [path, setPath] = useState("");
+    const [isUpload, setIsUpload] = useState(false);
+    const [file, setFile] = useState();
+    const get_storage_info = async () => {
+        setIsLoading(true);
+        const response = await axios.get(URL + "/system/disk");
+        setStorage(response.data);
+        setIsLoading(false);
+    };
+    const get_directory_info = async (path) => {
+        setIsLoading(true);
+        const response = await axios.post(URL + "/storage/read", {
+            path: path,
+        });
+        setDirectory(response.data);
+        setIsLoading(false);
+    };
+    const upload_file = async () => {
+        setIsLoading(true);
+        let formData = new FormData();
+        formData.append("path", path);
+        formData.append("file", file);
+        const response = await axios.post(URL + "/storage/upload", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        get_directory_info(path);
+        setIsUpload(false);
+        setIsLoading(false);
+    };
+    const download_file = async (path, name) => {
+        setIsLoading(true);
+        const response = await axios.post(URL + "/storage/download", {
+            path: path,
+        });
+        const url = window.URL.createObjectURL(
+            new Blob([response.data], {
+                type: `${response.headers["content-type"]}`,
+            })
+        );
+
+        let link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", name);
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        window.URL.revokeObjectURL(url); // memory 해제
+        setIsLoading(false);
+    };
+    const chgPath = (name) => {
+        setPath(path + "/" + name);
+    };
+    const downFile = (name) => {
+        const p = path + "/" + name;
+        download_file(p, name);
+    };
+    const goTop = () => {
+        setPath(path.substr(0, path.lastIndexOf("/")));
+    };
     useEffect(() => {
         get_storage_info();
     }, []);
@@ -36,7 +89,6 @@ const Storage = () => {
     }, [selIdx]);
     useEffect(() => {
         if (path !== "") {
-            console.log(path);
             get_directory_info(path);
         }
     }, [path]);
@@ -46,18 +98,27 @@ const Storage = () => {
             <div className="body">
                 <div className="optionWrap">
                     <div className="title">저장소</div>
-                    <select
-                        name="storage"
-                        onChange={(e) => {
-                            setSelIdx(e.target.value);
-                        }}
-                    >
-                        {storage.map((item, idx) => (
-                            <option value={idx}>{`#${idx + 1} ${
-                                item.device
-                            }`}</option>
-                        ))}
-                    </select>
+                    <div className="func">
+                        <button
+                            onClick={() => {
+                                setIsUpload(true);
+                            }}
+                        >
+                            파일 업로드
+                        </button>
+                        <select
+                            name="storage"
+                            onChange={(e) => {
+                                setSelIdx(e.target.value);
+                            }}
+                        >
+                            {storage.map((item, idx) => (
+                                <option value={idx}>{`#${idx + 1} ${
+                                    item.device
+                                }`}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
                 <div className="contentWrap">
                     <div className="infoWrap">
@@ -88,29 +149,47 @@ const Storage = () => {
                     </div>
                     <div className="folderWrap">
                         <div className="directoryWrap">
+                            {storage[selIdx].mount === path ? (
+                                <></>
+                            ) : (
+                                <FileIcon
+                                    name={"상위 폴더"}
+                                    ext={"back"}
+                                    goTop={() => {
+                                        console.log("[GO TOP FUCN]");
+                                        goTop();
+                                    }}
+                                />
+                            )}
+
                             {directory.map((item, idx) => (
                                 <>
                                     {item.name[0] !== "." ? (
-                                        <div
-                                            className="item"
-                                            title={item.name}
-                                            onClick={() => {
-                                                setPath(path + "/" + item.name);
-                                            }}
-                                        >
-                                            <img
-                                                src={IconFolder}
-                                                alt={item.name}
-                                                srcset=""
+                                        <>
+                                            <FileIcon
+                                                name={item.name}
+                                                ext={item.ext}
+                                                chgPath={(name) => {
+                                                    chgPath(name);
+                                                }}
+                                                downFile={(name) => {
+                                                    downFile(name);
+                                                }}
                                             />
-                                            <span>{item.name}</span>
-                                        </div>
+                                        </>
                                     ) : (
                                         <></>
                                     )}
                                 </>
                             ))}
                         </div>
+                        {isUpload && (
+                            <Upload
+                                uploadFunc={upload_file}
+                                setFile={setFile}
+                            />
+                        )}
+                        {isLoading && <Loading />}
                     </div>
                 </div>
             </div>

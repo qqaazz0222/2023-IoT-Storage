@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file, make_response
 from flask_cors import CORS
 from copy import copy
 import os
@@ -124,6 +124,24 @@ def view_directory():
     data = request.get_json()
     response = readDirectory.get_directory_list(data['path'])
     return jsonify(response)
+
+
+@app.route('/storage/upload', methods=["POST"])  # [ 시스템(DISK) 상태 조회 ]
+def upload_file():
+    path = request.form["path"]
+    file = request.files['file']
+    print("[PATH] : ", path)
+    print("[FILE] : ", file.filename)
+    file.save(path + "/" + file.filename)
+    return jsonify({"done": True})
+
+
+@app.route('/storage/download', methods=["POST"])  # [ 시스템(DISK) 상태 조회 ]
+def donwload_file():
+    data = request.get_json()
+    path = data["path"]
+    resource_path = os.path.join("", path)
+    return send_file(resource_path, as_attachment=True, conditional=True)
 
 
 @app.route('/summary', methods=["POST"])
