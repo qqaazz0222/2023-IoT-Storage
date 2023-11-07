@@ -89,6 +89,7 @@ const Storage = () => {
     }, [selIdx]);
     useEffect(() => {
         if (path !== "") {
+            console.log(path);
             get_directory_info(path);
         }
     }, [path]);
@@ -101,7 +102,7 @@ const Storage = () => {
                     <div className="func">
                         <button
                             onClick={() => {
-                                setIsUpload(true);
+                                setIsUpload(!isUpload);
                             }}
                         >
                             파일 업로드
@@ -187,6 +188,7 @@ const Storage = () => {
                             <Upload
                                 uploadFunc={upload_file}
                                 setFile={setFile}
+                                setIsUpload={setIsUpload}
                             />
                         )}
                         {isLoading && <Loading />}

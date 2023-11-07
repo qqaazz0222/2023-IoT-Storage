@@ -25,7 +25,7 @@ const Logo = () => (
     </svg>
 );
 
-const Upload = ({ uploadFunc, setFile }) => {
+const Upload = ({ uploadFunc, setFile, setIsUpload }) => {
     const [isActive, setActive] = useState(false);
     const [uploadedInfo, setUploadedInfo] = useState(null);
 
@@ -57,13 +57,21 @@ const Upload = ({ uploadFunc, setFile }) => {
     };
 
     return (
-        <div id="upload">
+        <div
+            id="upload"
+            onClick={() => {
+                setIsUpload(false);
+            }}
+        >
             <label
                 className={`preview${isActive ? " active" : ""}`}
                 onDragEnter={handleDragStart}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragEnd}
                 onDrop={handleDrop}
+                onClick={(e) => {
+                    e.stopPropagation();
+                }}
             >
                 <input type="file" className="file" onChange={handleUpload} />
                 {uploadedInfo && (
