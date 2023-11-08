@@ -7,7 +7,7 @@ const Sign = () => {
         <div id="sign">
             <div className="body">
                 <h1>IoT 저장소</h1>
-                <h6>할 일을 작성, 계획, 관리하세요.</h6>
+                <h6>저장소를 사용, 관리, 공유해보세요.</h6>
             </div>
             <div className="footer">
                 <div className="btnWrap">

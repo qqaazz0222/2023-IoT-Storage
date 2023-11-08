@@ -46,14 +46,22 @@ const SystemInfo = () => {
                             <div className="row">
                                 <div className="key">동작속도</div>
                                 <div className="value">
-                                    {cpu.freq[0] / 1000}Ghz
+                                    {cpu.freq[0] === undefined
+                                        ? "-"
+                                        : cpu.freq[0] / 1000 + "Ghz"}
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="key">사용시간</div>
                                 <div className="value">
-                                    {(cpu.times[3] / 360000).toFixed(0)}시간
-                                    {(cpu.times[3] / 6000).toFixed(0) % 60}분
+                                    {cpu.times[3] === undefined
+                                        ? "-"
+                                        : `${(cpu.times[3] / 360000).toFixed(
+                                              0
+                                          )}시간 ${
+                                              (cpu.times[3] / 6000).toFixed(0) %
+                                              60
+                                          }분`}
                                 </div>
                             </div>
                         </div>

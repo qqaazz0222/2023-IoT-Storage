@@ -83,10 +83,10 @@ const Storage = () => {
         get_storage_info();
     }, []);
     useEffect(() => {
-        if (storage[0].device !== "") {
+        if (storage[0].device !== "" && storage[0].mount !== "") {
             setPath(storage[selIdx].mount);
         }
-    }, [selIdx]);
+    }, [selIdx, storage]);
     useEffect(() => {
         if (path !== "") {
             console.log(path);
